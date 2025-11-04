@@ -1,0 +1,86 @@
+{
+  "days": [
+    {
+      "label": "Miércoles, 20",
+      "date": "2026-05-20",
+      "sessions": [
+        {
+          "time": "16:15",
+          "title": "SISFALED: Innovación en el Control de la Depreciación Lumínica y Garantías en Alumbrado Público",
+          "speakers": [
+            "Marta Diego"
+          ],
+          "entity": "EnergyTAS, Técnicos en Alumbrado Sostenible",
+          "room": "Auditorio",
+          "durationMinutes": 60
+        },
+        {
+          "time": "16:15",
+          "title": "El reto de iluminar El Puerto de Santa María",
+          "speakers": [
+            "Jesús Sevilla",
+            "Enrique Briehl"
+          ],
+          "entity": "Ayuntamiento de El Puerto de Santa María, LEC",
+          "room": "Sala Polivalente",
+          "durationMinutes": 45
+        }
+      ]
+    },
+    {
+      "label": "Jueves, 21",
+      "date": "2026-05-21",
+      "sessions": [
+        {
+          "time": "09:00",
+          "title": "La luz y los Espacios Naturales. Un obligado equilibrio",
+          "speakers": [
+            "Javier Parra"
+          ],
+          "entity": "Alared Innovación Tecnológica",
+          "room": "Auditorio",
+          "durationMinutes": 60
+        },
+        {
+          "time": "09:00",
+          "title": "Detección y Monitorización del estado de corrosión de los soportes de alumbrado público",
+          "speakers": [
+            "Sergio Somavilla"
+          ],
+          "entity": "Rubatec",
+          "room": "Sala Polivalente",
+          "durationMinutes": 45
+        }
+      ]
+    },
+    {
+      "label": "Viernes, 23",
+      "date": "2026-05-22",
+      "sessions": [
+        {
+          "time": "10:00",
+          "title": "Renovación de alumbrado público en Burlada Navarra. Una nueva forma de financiar una instalación",
+          "speakers": [
+            "Guillermo Redrado",
+            "Andrés Armañanzas",
+            "Sandra Solán",
+            "David Gordejuela"
+          ],
+          "entity": "ATP Iluminación, Nasei ingeniería, Ayuntamiento de Burlada",
+          "room": "Auditorio",
+          "durationMinutes": 60
+        },
+        {
+          "time": "10:00",
+          "title": "Huella de Carbono: ampliación al reciclaje",
+          "speakers": [
+            "Pilar Vázquez"
+          ],
+          "entity": "Fundación Ecolum",
+          "room": "Sala Polivalente",
+          "durationMinutes": 45
+        }
+      ]
+    }
+  ]
+}
