@@ -2,7 +2,6 @@
   "name": "congreso2025",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://cei-simposium.github.io/congreso2025",
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
