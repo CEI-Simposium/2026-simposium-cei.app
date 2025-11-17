@@ -1,84 +1,146 @@
 {
   "days": [
     {
-      "label": "Miércoles, 20",
+      "label": "Día 1",
       "date": "2026-05-20",
       "sessions": [
         {
-          "time": "16:15",
-          "title": "SISFALED: Innovación en el Control de la Depreciación Lumínica y Garantías en Alumbrado Público",
-          "speakers": [
-            "Marta Diego"
-          ],
-          "entity": "EnergyTAS, Técnicos en Alumbrado Sostenible",
+          "id": "s1",
+          "time": "09:00",
+          "title": "Apertura del Simposium",
+          "speakers": ["Juan Pérez"],
+          "entity": "CEI",
           "room": "Auditorio",
-          "durationMinutes": 60
+          "durationMinutes": 30
         },
         {
-          "time": "16:15",
-          "title": "El reto de iluminar El Puerto de Santa María",
-          "speakers": [
-            "Jesús Sevilla",
-            "Enrique Briehl"
-          ],
-          "entity": "Ayuntamiento de El Puerto de Santa María, LEC",
+          "id": "s2",
+          "time": "09:45",
+          "title": "Tendencias en Alumbrado Público",
+          "speakers": ["María López", "Carlos García"],
+          "entity": "LuminaTech",
           "room": "Sala Polivalente",
           "durationMinutes": 45
+        },
+        {
+          "id": "s3",
+          "time": "10:45",
+          "title": "Iluminación sostenible en ciudades",
+          "speakers": ["Ana Torres"],
+          "entity": "GreenLight",
+          "room": "Auditorio",
+          "durationMinutes": 30
+        },
+        {
+          "id": "s4",
+          "time": "11:30",
+          "title": "Nuevas normativas y estándares",
+          "speakers": ["Luis Fernández"],
+          "entity": "CEI",
+          "room": "Sala Polivalente",
+          "durationMinutes": 45
+        },
+        {
+          "id": "s5",
+          "time": "12:30",
+          "title": "Panel de debate: Innovación y retos",
+          "speakers": ["Sara Martínez", "Jorge Ruiz"],
+          "entity": "CitySmart",
+          "room": "Auditorio",
+          "durationMinutes": 60
         }
       ]
     },
     {
-      "label": "Jueves, 21",
+      "label": "Día 2",
       "date": "2026-05-21",
       "sessions": [
         {
+          "id": "s6",
           "time": "09:00",
-          "title": "La luz y los Espacios Naturales. Un obligado equilibrio",
-          "speakers": [
-            "Javier Parra"
-          ],
-          "entity": "Alared Innovación Tecnológica",
+          "title": "Casos de éxito: LED en entornos urbanos",
+          "speakers": ["Luis Fernández"],
+          "entity": "BrightCity",
           "room": "Auditorio",
+          "durationMinutes": 45
+        },
+        {
+          "id": "s7",
+          "time": "10:00",
+          "title": "Smart Cities y alumbrado inteligente",
+          "speakers": ["Sara Martínez", "Jorge Ruiz"],
+          "entity": "CitySmart",
+          "room": "Sala Polivalente",
           "durationMinutes": 60
         },
         {
-          "time": "09:00",
-          "title": "Detección y Monitorización del estado de corrosión de los soportes de alumbrado público",
-          "speakers": [
-            "Sergio Somavilla"
-          ],
-          "entity": "Rubatec",
-          "room": "Sala Polivalente",
+          "id": "s8",
+          "time": "11:15",
+          "title": "Diseño lumínico en espacios públicos",
+          "speakers": ["Laura Gómez"],
+          "entity": "LumenDesign",
+          "room": "Auditorio",
           "durationMinutes": 45
+        },
+        {
+          "id": "s9",
+          "time": "12:15",
+          "title": "Tecnología LED: eficiencia y sostenibilidad",
+          "speakers": ["Pedro Castillo"],
+          "entity": "LuminaTech",
+          "room": "Sala Polivalente",
+          "durationMinutes": 30
+        },
+        {
+          "id": "s10",
+          "time": "13:00",
+          "title": "Mesa redonda: Futuro del alumbrado",
+          "speakers": ["Elena Rivas", "Carlos García"],
+          "entity": "CEI",
+          "room": "Auditorio",
+          "durationMinutes": 60
         }
       ]
     },
     {
-      "label": "Viernes, 23",
+      "label": "Día 3",
       "date": "2026-05-22",
       "sessions": [
         {
-          "time": "10:00",
-          "title": "Renovación de alumbrado público en Burlada Navarra. Una nueva forma de financiar una instalación",
-          "speakers": [
-            "Guillermo Redrado",
-            "Andrés Armañanzas",
-            "Sandra Solán",
-            "David Gordejuela"
-          ],
-          "entity": "ATP Iluminación, Nasei ingeniería, Ayuntamiento de Burlada",
+          "id": "s11",
+          "time": "09:30",
+          "title": "Innovación y tendencias globales",
+          "speakers": ["Juan Pérez", "Ana Torres"],
+          "entity": "CEI",
           "room": "Auditorio",
+          "durationMinutes": 45
+        },
+        {
+          "id": "s12",
+          "time": "10:30",
+          "title": "Iluminación artística en espacios culturales",
+          "speakers": ["Sara Martínez"],
+          "entity": "LumenArts",
+          "room": "Sala Polivalente",
           "durationMinutes": 60
         },
         {
-          "time": "10:00",
-          "title": "Huella de Carbono: ampliación al reciclaje",
-          "speakers": [
-            "Pilar Vázquez"
-          ],
-          "entity": "Fundación Ecolum",
-          "room": "Sala Polivalente",
-          "durationMinutes": 45
+          "id": "s13",
+          "time": "11:45",
+          "title": "Taller práctico: Optimización lumínica",
+          "speakers": ["Pedro Castillo", "Laura Gómez"],
+          "entity": "LuminaTech",
+          "room": "Auditorio",
+          "durationMinutes": 90
+        },
+        {
+          "id": "s14",
+          "time": "13:15",
+          "title": "Clausura y conclusiones",
+          "speakers": ["Juan Pérez"],
+          "entity": "CEI",
+          "room": "Auditorio",
+          "durationMinutes": 30
         }
       ]
     }
