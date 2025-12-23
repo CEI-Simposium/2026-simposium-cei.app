@@ -14,6 +14,7 @@ function App() {
   const [query, setQuery] = useState('');
   const [user, setUser] = useState(null);
   const [favorites, setFavorites] = useState([]);
+  const [showFavorites, setShowFavorites] = useState(false);
 
   const days = program.days;
 
@@ -22,21 +23,16 @@ function App() {
     onAuthStateChanged(auth, async (u) => {
       setUser(u);
       if (u) {
-        // Load user favorites from Firestore
         const docRef = doc(db, "favorites", u.uid);
         const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setFavorites(docSnap.data().sessions || []);
-        } else {
-          setFavorites([]);
-        }
+        setFavorites(docSnap.exists() ? docSnap.data().sessions || [] : []);
       } else {
         setFavorites([]);
       }
     });
   }, []);
 
-  // Add to Calendar (as ICS file)
+  // Add to Calendar
   const addToCalendar = (session, dayDate) => {
     const [hh, mm] = session.time.split(':').map(Number);
     let start = parseISO(dayDate + 'T00:00:00');
@@ -84,16 +80,25 @@ function App() {
   const currentDaySessions = days.find(d => d.label === selectedDay)?.sessions || [];
   const filtered = currentDaySessions.filter(s => {
     if (roomFilter !== 'Todos' && s.room !== roomFilter) return false;
-    if (query.trim() === '') return true;
-    const q = query.toLowerCase();
-    if (s.title?.toLowerCase().includes(q)) return true;
-    if ((s.speakers || []).join(' ').toLowerCase().includes(q)) return true;
-    return false;
+    const q = query.trim().toLowerCase();
+    if (!q) return true;
+    return s.title?.toLowerCase().includes(q)
+      || s.speakers?.join(' ').toLowerCase().includes(q)
+      || s.entity?.toLowerCase().includes(q);
   });
 
-  // Sessions to display: can switch between "all" or "favorites"
-  const [showFavorites, setShowFavorites] = useState(false);
   const displayedSessions = showFavorites ? favorites : filtered;
+
+  // Favorites grouped by day and ordered
+  const favoritesByDay = favorites.reduce((acc, session) => {
+    if (!acc[session.day]) acc[session.day] = [];
+    acc[session.day].push(session);
+    return acc;
+  }, {});
+
+  const orderedFavoritesByDay = days
+    .map(d => [d.date, favoritesByDay[d.date] || []])
+    .filter(([_, sessions]) => sessions.length > 0);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -135,14 +140,14 @@ function App() {
                 <select value={roomFilter} onChange={e => setRoomFilter(e.target.value)} className="px-2 py-1 border rounded">
                   <option>Todos</option>
                   <option>Auditorio</option>
-                  <option>Sala Polivalente</option>
+                  <option>Polivalente</option>
                 </select>
 
                 <input
                   value={query}
                   onChange={e => setQuery(e.target.value)}
-                  placeholder="Buscar por título o ponente..."
-                  className="px-3 py-1 border rounded w-56"
+                  placeholder="Buscar por título, ponente o entidad..."
+                  className="px-3 py-1 border rounded w-64"
                 />
               </div>
             )}
@@ -150,8 +155,9 @@ function App() {
         </section>
 
         <section className="space-y-3">
-          {displayedSessions.length === 0 && <div className="text-gray-500">No hay ponencias que coincidan.</div>}
-          {displayedSessions.map((s, idx) => (
+          {!showFavorites && displayedSessions.length === 0 && <div className="text-gray-500">No hay ponencias que coincidan.</div>}
+
+          {!showFavorites && displayedSessions.map((s, idx) => (
             <SesionCard
               key={idx}
               session={s}
@@ -160,6 +166,27 @@ function App() {
               onToggleFavorite={toggleFavorite}
               isFavorite={favorites.some(f => f.title === s.title && f.time === s.time)}
             />
+          ))}
+
+          {showFavorites && orderedFavoritesByDay.map(([day, sessions]) => (
+            <div key={day}>
+              <h3 className="mt-4 mb-2 font-bold text-sky-700">
+                {days.find(d => d.date === day)?.label || day}
+              </h3>
+
+              <div className="space-y-3">
+                {sessions.map((s, idx) => (
+                  <SesionCard
+                    key={idx}
+                    session={s}
+                    dayDate={day}
+                    onAddCalendar={addToCalendar}
+                    onToggleFavorite={toggleFavorite}
+                    isFavorite={true}
+                  />
+                ))}
+              </div>
+            </div>
           ))}
         </section>
       </main>

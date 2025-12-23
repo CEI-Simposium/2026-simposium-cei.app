@@ -1,146 +1,140 @@
 {
   "days": [
     {
-      "label": "Día 1",
+      "label": "Miércoles, 20/05",
       "date": "2026-05-20",
       "sessions": [
         {
-          "id": "s1",
-          "time": "09:00",
-          "title": "Apertura del Simposium",
-          "speakers": ["Juan Pérez"],
-          "entity": "CEI",
+          "time": "17:15",
+          "title": "Casos de alumbrado exterior adaptativo en tiempo real. Combinación con cámaras de seguridad y lectores de matrículas",
+          "speakers": ["Borja Cirauqui"],
+          "entity": "Signify",
           "room": "Auditorio",
-          "durationMinutes": 30
+          "day": "2026-05-20"
         },
         {
-          "id": "s2",
-          "time": "09:45",
-          "title": "Tendencias en Alumbrado Público",
-          "speakers": ["María López", "Carlos García"],
-          "entity": "LuminaTech",
-          "room": "Sala Polivalente",
-          "durationMinutes": 45
+          "time": "17:15",
+          "title": "Comparativa de evaluación dinámica de iluminancia a 30 centímetros del pavimento y en el techo de un vehículo",
+          "speakers": ["Senen Perales", "José Miguel Perandones", "Miguel Sobrino"],
+          "entity": "AMAC Europa",
+          "room": "Polivalente",
+          "day": "2026-05-20"
         },
         {
-          "id": "s3",
-          "time": "10:45",
-          "title": "Iluminación sostenible en ciudades",
-          "speakers": ["Ana Torres"],
-          "entity": "GreenLight",
+          "time": "17:30",
+          "title": "Pausa Café",
+          "speakers": [],
+          "entity": "",
+          "room": "Polivalente",
+          "day": "2026-05-20"
+        },
+        {
+          "time": "18:00",
+          "title": "Doble capa tecnológica: telegestión y sensorización en la Vía Verde del Ayuntamiento de Santiago de Compostela",
+          "speakers": ["Diego Viana"],
+          "entity": "Televés",
           "room": "Auditorio",
-          "durationMinutes": 30
+          "day": "2026-05-20"
         },
         {
-          "id": "s4",
-          "time": "11:30",
-          "title": "Nuevas normativas y estándares",
-          "speakers": ["Luis Fernández"],
-          "entity": "CEI",
-          "room": "Sala Polivalente",
-          "durationMinutes": 45
-        },
-        {
-          "id": "s5",
-          "time": "12:30",
-          "title": "Panel de debate: Innovación y retos",
-          "speakers": ["Sara Martínez", "Jorge Ruiz"],
-          "entity": "CitySmart",
-          "room": "Auditorio",
-          "durationMinutes": 60
+          "time": "18:00",
+          "title": "Tipos de contratos en sector público para la ejecución de instalaciones de alumbrado. Comparativa. Ventajas e inconvenientes",
+          "speakers": ["Jaime Miguel"],
+          "entity": "Diputación de Soria",
+          "room": "Polivalente",
+          "day": "2026-05-20"
         }
       ]
     },
     {
-      "label": "Día 2",
+      "label": "Jueves, 21/05",
       "date": "2026-05-21",
       "sessions": [
         {
-          "id": "s6",
-          "time": "09:00",
-          "title": "Casos de éxito: LED en entornos urbanos",
-          "speakers": ["Luis Fernández"],
-          "entity": "BrightCity",
+          "time": "07:15",
+          "title": "Proyecto MeLiDos: experiencia de campo con los protocolos de trabajo y los dosímetros de luz visible",
+          "speakers": ["David Baeza"],
+          "entity": "Universidad CEU San Pablo",
           "room": "Auditorio",
-          "durationMinutes": 45
+          "day": "2026-05-21"
         },
         {
-          "id": "s7",
-          "time": "10:00",
-          "title": "Smart Cities y alumbrado inteligente",
-          "speakers": ["Sara Martínez", "Jorge Ruiz"],
-          "entity": "CitySmart",
-          "room": "Sala Polivalente",
-          "durationMinutes": 60
+          "time": "17:15",
+          "title": "Estudio de la influencia de la variable tiempo como factor relevante en la eficiencia energética de la iluminación de edificios de pública concurrencia",
+          "speakers": ["Luis Miguel Pardal", "Francisco Javier Pérez", "Ricardo Díaz"],
+          "entity": "Universidad Complutense de Madrid (UCM) Facultad de Ciencias Químicas",
+          "room": "Polivalente",
+          "day": "2026-05-21"
         },
         {
-          "id": "s8",
-          "time": "11:15",
-          "title": "Diseño lumínico en espacios públicos",
-          "speakers": ["Laura Gómez"],
-          "entity": "LumenDesign",
+          "time": "17:30",
+          "title": "Pausa Café",
+          "speakers": [],
+          "entity": "",
+          "room": "Polivalente",
+          "day": "2026-05-21"
+        },
+        {
+          "time": "18:00",
+          "title": "Arquitectura judicial: modernización de los edificios a través de la iluminación interior y ahorro energético",
+          "speakers": ["María Elina Marco"],
+          "entity": "Ministerio de Presidencia, Justicia y Relaciones con las Cortes",
           "room": "Auditorio",
-          "durationMinutes": 45
+          "day": "2026-05-21"
         },
         {
-          "id": "s9",
-          "time": "12:15",
-          "title": "Tecnología LED: eficiencia y sostenibilidad",
-          "speakers": ["Pedro Castillo"],
-          "entity": "LuminaTech",
-          "room": "Sala Polivalente",
-          "durationMinutes": 30
-        },
-        {
-          "id": "s10",
-          "time": "13:00",
-          "title": "Mesa redonda: Futuro del alumbrado",
-          "speakers": ["Elena Rivas", "Carlos García"],
-          "entity": "CEI",
-          "room": "Auditorio",
-          "durationMinutes": 60
+          "time": "18:00",
+          "title": "Samil, una nueva generación de luminarias en polímero técnico",
+          "speakers": ["Iván Rodríguez", "Ignacio Seoane"],
+          "entity": "Televes",
+          "room": "Polivalente",
+          "day": "2026-05-21"
         }
       ]
     },
     {
-      "label": "Día 3",
+      "label": "Viernes, 22/05",
       "date": "2026-05-22",
       "sessions": [
         {
-          "id": "s11",
-          "time": "09:30",
-          "title": "Innovación y tendencias globales",
-          "speakers": ["Juan Pérez", "Ana Torres"],
-          "entity": "CEI",
+          "time": "10:45",
+          "title": "Renovación de la iluminación del estadio de atletismo Joaquín Villar (Alicante) con un novedoso sistema de control inalámbrico para estadios",
+          "speakers": ["Sergio Pérez"],
+          "entity": "Signify",
           "room": "Auditorio",
-          "durationMinutes": 45
+          "day": "2026-05-22"
         },
         {
-          "id": "s12",
-          "time": "10:30",
-          "title": "Iluminación artística en espacios culturales",
-          "speakers": ["Sara Martínez"],
-          "entity": "LumenArts",
-          "room": "Sala Polivalente",
-          "durationMinutes": 60
+          "time": "10:45",
+          "title": "Here comes the sun",
+          "speakers": ["Miguel Ángel Ramos"],
+          "entity": "Schréder Spain",
+          "room": "Polivalente",
+          "day": "2026-05-22"
         },
         {
-          "id": "s13",
-          "time": "11:45",
-          "title": "Taller práctico: Optimización lumínica",
-          "speakers": ["Pedro Castillo", "Laura Gómez"],
-          "entity": "LuminaTech",
-          "room": "Auditorio",
-          "durationMinutes": 90
+          "time": "11:00",
+          "title": "Pausa Café",
+          "speakers": [],
+          "entity": "",
+          "room": "Polivalente",
+          "day": "2026-05-22"
         },
         {
-          "id": "s14",
-          "time": "13:15",
-          "title": "Clausura y conclusiones",
-          "speakers": ["Juan Pérez"],
-          "entity": "CEI",
+          "time": "11:30",
+          "title": "Ponencia Magistral | Líneas de ayudas en el alumbrado exterior",
+          "speakers": ["Ángel Sánchez de Vera"],
+          "entity": "IDAE",
           "room": "Auditorio",
-          "durationMinutes": 30
+          "day": "2026-05-22"
+        },
+        {
+          "time": "12:00",
+          "title": "Mesa Redonda | Realización de medidas dinámicas de iluminancia y luminancia en instalaciones de alumbrado exterior",
+          "speakers": ["Senén Perales", "Rafael Soriano", "Luis M. Navarro", "Ángel Sánchez de Vera"],
+          "entity": "Amac Europa, Eficen, CEI, IDAE",
+          "room": "Auditorio",
+          "day": "2026-05-22"
         }
       ]
     }
