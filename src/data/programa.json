@@ -1,141 +1,106 @@
 {
   "days": [
     {
-      "label": "Miércoles, 20/05",
+      "label": "Miércoles 20",
       "date": "2026-05-20",
       "sessions": [
-        {
-          "time": "17:15",
-          "title": "Casos de alumbrado exterior adaptativo en tiempo real. Combinación con cámaras de seguridad y lectores de matrículas",
-          "speakers": ["Borja Cirauqui"],
-          "entity": "Signify",
-          "room": "Auditorio",
-          "day": "2026-05-20"
-        },
-        {
-          "time": "17:15",
-          "title": "Comparativa de evaluación dinámica de iluminancia a 30 centímetros del pavimento y en el techo de un vehículo",
-          "speakers": ["Senen Perales", "José Miguel Perandones", "Miguel Sobrino"],
-          "entity": "AMAC Europa",
-          "room": "Polivalente",
-          "day": "2026-05-20"
-        },
-        {
-          "time": "17:30",
-          "title": "Pausa Café",
-          "speakers": [],
-          "entity": "",
-          "room": "Polivalente",
-          "day": "2026-05-20"
-        },
-        {
-          "time": "18:00",
-          "title": "Doble capa tecnológica: telegestión y sensorización en la Vía Verde del Ayuntamiento de Santiago de Compostela",
-          "speakers": ["Diego Viana"],
-          "entity": "Televés",
-          "room": "Auditorio",
-          "day": "2026-05-20"
-        },
-        {
-          "time": "18:00",
-          "title": "Tipos de contratos en sector público para la ejecución de instalaciones de alumbrado. Comparativa. Ventajas e inconvenientes",
-          "speakers": ["Jaime Miguel"],
-          "entity": "Diputación de Soria",
-          "room": "Polivalente",
-          "day": "2026-05-20"
-        }
+        { "time": "12:00", "title": "Recogida de Acreditaciones", "room": "General", "durationMinutes": 240 },
+        { "time": "16:00", "title": "Inauguración Comité Español de Iluminación y el Ayuntamiento de Lleida", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "16:20", "title": "Norma de Inmunidad para equipos de Iluminación EN IEC 61547:2023", "room": "Auditorio", "speakers": ["Alberto Sánchez"], "entity": "IMQ Ibérica, S.L.U.", "durationMinutes": 20 },
+        { "time": "16:20", "title": "Palacio Episcopal Astorga", "room": "Polivalente", "speakers": ["Nicolás Machado"], "entity": "iGuzzini illuminazione Ibérica, S.A.U.", "durationMinutes": 20 },
+        { "time": "16:40", "title": "Trabajar con seguridad en instalaciones de alumbrado en altura", "room": "Auditorio", "speakers": ["Jose Luis Torres"], "entity": "Baculos SA", "durationMinutes": 20 },
+        { "time": "16:40", "title": "Alumbrado público solar autónomo de Ekiona", "room": "Polivalente", "speakers": ["Iker García"], "entity": "Ekiona Iluminación Solar", "durationMinutes": 20 },
+        { "time": "17:00", "title": "Medida dinámica de la Luminancia en la vía pública", "room": "Auditorio", "speakers": ["J.M. Perandones", "A. Molinero"], "entity": "AMAC Europa S.L.", "durationMinutes": 20 },
+        { "time": "17:00", "title": "Proyectos de renovación de Alumbrado Público: Análisis ambiental", "room": "Polivalente", "speakers": ["Luis Vidal López", "Maria José Sanz"], "entity": "Ayuntamiento de Zaragoza", "durationMinutes": 20 },
+        { "time": "17:20", "title": "ENEC+ en los módulos LED de alumbrado público", "room": "Auditorio", "speakers": ["Miguel Collado"], "entity": "Vossloh-Schwabe Ibérica S.L.", "durationMinutes": 20 },
+        { "time": "17:20", "title": "Alumbrado Centro Histórico de Vic - Renovación Luminaria PICALLIMA", "room": "Polivalente", "speakers": ["Albert de Ramos"], "entity": "Benito Urban SLU", "durationMinutes": 20 },
+        { "time": "17:40", "title": "Pausa Café", "room": "General", "durationMinutes": 30 },
+        { "time": "18:10", "title": "20 años de protección del Observatorio Astronómico del Montsec", "room": "Auditorio", "speakers": ["Sergi Paricio", "Salvador J. Ribas"], "entity": "Generalitat de Catalunya", "durationMinutes": 20 },
+        { "time": "18:10", "title": "Iluminación eficiente en grandes complejos deportivos: CAR de Madrid", "room": "Polivalente", "speakers": ["Jaime Bretón"], "entity": "Tragsa", "durationMinutes": 20 },
+        { "time": "18:30", "title": "Iluminación Interior del Altar Mayor y la Santa Capilla del Pilar", "room": "Auditorio", "speakers": ["Javier Oneca", "César Insa"], "entity": "Saltoki", "durationMinutes": 20 },
+        { "time": "18:30", "title": "Aspectos técnicos en contratos de alumbrado", "room": "Polivalente", "speakers": ["Jaime Miguel"], "entity": "Diputación Provincial de Soria", "durationMinutes": 20 },
+        { "time": "18:50", "title": "Solar Analytics: el valor de la información", "room": "Auditorio", "speakers": ["Santiago Julián"], "entity": "Signify", "durationMinutes": 20 },
+        { "time": "18:50", "title": "Análisis de instalación de alumbrado público tras 15 años", "room": "Polivalente", "speakers": ["Xavier Traveria"], "entity": "C&G Carandini", "durationMinutes": 20 },
+        { "time": "19:10", "title": "Restart Engineering: iluminación urbana y arquitectónica", "room": "Auditorio", "speakers": ["Mattia Filippo Pagliai"], "entity": "Restart Engineering S.r.l", "durationMinutes": 20 },
+        { "time": "19:10", "title": "Implicaciones de seguridad fotobiológica en luminarias", "room": "Polivalente", "speakers": ["Teresa Molina"], "entity": "candelTEC S.L.", "durationMinutes": 20 },
+        { "time": "19:30", "title": "De la norma al césped: retos reales en campos de fútbol", "room": "Auditorio", "speakers": ["Albert de Ramos", "Marc Ballbe"], "entity": "Benito / Asselum", "durationMinutes": 20 },
+        { "time": "19:30", "title": "Experiencias de control de punto unidireccional", "room": "Polivalente", "speakers": ["Francisco Pérez", "Daniel Urbiztondo"], "entity": "ARELSA", "durationMinutes": 20 },
+        { "time": "21:00", "title": "Recepción Institucional del Ayuntamiento de Lleida", "room": "General", "entity": "La Seu Vella", "durationMinutes": 90 }
       ]
     },
     {
-      "label": "Jueves, 21/05",
+      "label": "Jueves 21",
       "date": "2026-05-21",
       "sessions": [
-        {
-          "time": "07:15",
-          "title": "Proyecto MeLiDos: experiencia de campo con los protocolos de trabajo y los dosímetros de luz visible",
-          "speakers": ["David Baeza"],
-          "entity": "Universidad CEU San Pablo",
-          "room": "Auditorio",
-          "day": "2026-05-21"
-        },
-        {
-          "time": "17:15",
-          "title": "Estudio de la influencia de la variable tiempo como factor relevante en la eficiencia energética de la iluminación de edificios de pública concurrencia",
-          "speakers": ["Luis Miguel Pardal", "Francisco Javier Pérez", "Ricardo Díaz"],
-          "entity": "Universidad Complutense de Madrid (UCM) Facultad de Ciencias Químicas",
-          "room": "Polivalente",
-          "day": "2026-05-21"
-        },
-        {
-          "time": "17:30",
-          "title": "Pausa Café",
-          "speakers": [],
-          "entity": "",
-          "room": "Polivalente",
-          "day": "2026-05-21"
-        },
-        {
-          "time": "18:00",
-          "title": "Arquitectura judicial: modernización de los edificios a través de la iluminación interior y ahorro energético",
-          "speakers": ["María Elina Marco"],
-          "entity": "Ministerio de Presidencia, Justicia y Relaciones con las Cortes",
-          "room": "Auditorio",
-          "day": "2026-05-21"
-        },
-        {
-          "time": "18:00",
-          "title": "Samil, una nueva generación de luminarias en polímero técnico",
-          "speakers": ["Iván Rodríguez", "Ignacio Seoane"],
-          "entity": "Televes",
-          "room": "Polivalente",
-          "day": "2026-05-21"
-        }
+        { "time": "09:00", "title": "Palabras de luz: aproximación lexicográfica en el espacio arquitectónico", "speakers": ["Ainara Bilbao"], "entity": "Urbidermis S.L", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "09:00", "title": "Soluciones ópticas ultra-eficientes para iluminación dark sky", "speakers": ["Dave Simpson"], "entity": "LEDiL Oy", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "09:20", "title": "Supercomputación en la evaluación de la contaminación lumínica", "speakers": ["Manuel Garcia", "Hector Linares"], "entity": "Generalitat de Catalunya / IEEC", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "09:20", "title": "Audiencia Digital y requerimientos de iluminación (VAR, GLT) en fútbol", "speakers": ["Octavio L. Pérez", "Carlos Sierra"], "entity": "UPC", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "09:40", "title": "Innovación, comunidad y bienestar en iluminación", "speakers": ["Andrea Padré"], "entity": "CICAT, LightingPlat", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "09:40", "title": "Roig Arena: iluminación flexible y controlada", "speakers": ["Sergio Pérez"], "entity": "Signify", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "10:00", "title": "Ámbitos, Beneficios y Tendencias de la Iluminación HCL en 2026", "speakers": ["Julio César Álvarez"], "entity": "Ledvance Lighting SAU", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "10:00", "title": "Iluminación Adaptativa en el parque del Molinet", "speakers": ["Sara Arguedas", "Xavier Traveria"], "entity": "AMB / C&G Carandini", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "10:20", "title": "Deslumbramiento bajo iluminación LED: temperatura de color y transmitancia ocular", "speakers": ["Eduardo G. Vicente", "Beatriz M. Matesanz"], "entity": "Universidad de Valladolid", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "10:20", "title": "Iluminación Ornamental en Medinaceli, Soria", "speakers": ["Luis Miguel Navarro", "Javier Oneca"], "entity": "SIAR Ingeniería / Saltoki", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "10:40", "title": "Estrategia de gestión del alumbrado de Lleida tras contrato ESE", "speakers": ["Victor Lacasa"], "entity": "Ayuntamiento de Lleida", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "10:40", "title": "Sol al final del túnel: Innovación energética en infraestructuras viales", "speakers": ["Alvaro Arpón", "Ramón Ruiz"], "entity": "Diputación de Bizkaia / Tecuni S.A.", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "11:00", "title": "Pausa Café", "room": "General", "durationMinutes": 30 },
+        { "time": "11:30", "title": "Sesión Técnica IDAE", "speakers": ["Representante IDAE"], "entity": "IDAE", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "11:50", "title": "El buen uso de las temperaturas de color ultra cálidas", "speakers": ["Andrés Armañanzas", "Sandra Solán"], "entity": "ATP Iluminación S.A.", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "11:50", "title": "Iluminar calles visitadas: arquitectura, ciudad y personas", "entity": "Salvi Lighting", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "12:10", "title": "Iluminar con equilibrio: biodiversidad y eficiencia en sociedad 24/7", "speakers": ["María del Mar Gandolfo"], "entity": "Signify", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "12:10", "title": "Detalles técnicos sobre la tecnología LED", "speakers": ["Oscar Gonçalves", "Francisco Cavaller"], "entity": "Industrias de Iluminación Roura, S.A.", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "12:30", "title": "Evolución y tendencias futuras del alumbrado", "speakers": ["Miguel Ángel Ramos"], "entity": "Schréder Spain SLU", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "12:30", "title": "Claves para la verificación técnica en luminarias públicas", "speakers": ["Joan Milian"], "entity": "Simon Lighting", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "12:50", "title": "Mesa Redonda: Alumbrado Interior", "room": "Auditorio", "durationMinutes": 50 },
+        { "time": "14:00", "title": "Almuerzo de trabajo", "room": "General", "durationMinutes": 120 },
+        { "time": "16:00", "title": "Calidad de Iluminación Natural: Aproximación metodológica", "speakers": ["Paula M. Esquivias", "Antonio J. Serrano"], "entity": "Universidad de Granada", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "16:00", "title": "Agaete, Puerto de estrellas", "speakers": ["J. Federico de la Paz"], "entity": "Instituto de Astrofísica de Canarias", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "16:20", "title": "La iluminación interior pensando en las personas mayores", "speakers": ["David Baeza"], "entity": "Universidad CEU San Pablo", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "16:20", "title": "Renovación y mantenimiento del alumbrado de Lleida con GIS", "speakers": ["Albert Garcia", "Juan Gallostra"], "entity": "Test JG", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "16:40", "title": "Innovar para iluminar sin impactar: Techos Mágicos y Luxdeko", "speakers": ["Francisco Manuel Jaén"], "entity": "Ximenez Group", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "16:40", "title": "Medidas de contaminación lumínica de grandes instalaciones", "speakers": ["Susana Malón"], "entity": "Lumínica Ambiental SLU", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "17:00", "title": "Instalaciones deportivas de alto nivel en Aragón", "speakers": ["César Insa", "Iñigo Sanchez"], "entity": "Saltoki", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "17:00", "title": "Materias primas críticas: reciclaje de Leds y economía circular", "speakers": ["Pilar Vázquez"], "entity": "Fundación Ecolum", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "17:20", "title": "Columnas metálicas TOP: resistencia y longevidad", "speakers": ["Juan Roura"], "entity": "Industrias de Iluminación Roura, S.A.", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "17:20", "title": "Alumbrado solar & estética: el fin de la elección", "speakers": ["Yoann Béguin"], "entity": "Fonroche Lighting Hub España", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "17:40", "title": "¿Sabemos dimensionar las soluciones en el alumbrado público?", "speakers": ["Ricard Comulada", "Mercedes Diaz"], "entity": "Tridonic", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "17:40", "title": "Luz Digital: Una fachada que comunica (Lloret de Mar)", "speakers": ["Alfred Sá", "Domingo Peccorini"], "entity": "Nur Lighting Design", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "18:00", "title": "Pausa Café", "room": "General", "durationMinutes": 30 },
+        { "time": "18:30", "title": "Fuengirola Smart City: Gestión Inteligente con IA", "speakers": ["Jessica Kamps", "Jorge Del Valle"], "entity": "Itron / Ayto. Fuengirola", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "18:30", "title": "Sistema de Telegestión Blu2Light en el Port de la Selva", "speakers": ["David Rius"], "entity": "Vossloh-Schwabe Ibérica S.L.", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "18:50", "title": "Renovación del Alumbrado Deportivo de Lleida con Control", "speakers": ["Jordi Berengueras"], "entity": "Benito Urban SLU", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "18:50", "title": "¿FHS 0 A CUALQUIER PRECIO?", "speakers": ["Andrés Armañanzas", "Sandra Solán"], "entity": "ATP Iluminación S.A.", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "19:10", "title": "Mesa Redonda: Lighting Design", "room": "Auditorio", "durationMinutes": 50 },
+        { "time": "21:00", "title": "Recorrido gastronómico por la ciudad de Lleida", "room": "General", "durationMinutes": 120 }
       ]
     },
     {
-      "label": "Viernes, 22/05",
+      "label": "Viernes 22",
       "date": "2026-05-22",
       "sessions": [
-        {
-          "time": "10:45",
-          "title": "Renovación de la iluminación del estadio de atletismo Joaquín Villar (Alicante) con un novedoso sistema de control inalámbrico para estadios",
-          "speakers": ["Sergio Pérez"],
-          "entity": "Signify",
-          "room": "Auditorio",
-          "day": "2026-05-22"
-        },
-        {
-          "time": "10:45",
-          "title": "Here comes the sun",
-          "speakers": ["Miguel Ángel Ramos"],
-          "entity": "Schréder Spain",
-          "room": "Polivalente",
-          "day": "2026-05-22"
-        },
-        {
-          "time": "11:00",
-          "title": "Pausa Café",
-          "speakers": [],
-          "entity": "",
-          "room": "Polivalente",
-          "day": "2026-05-22"
-        },
-        {
-          "time": "11:30",
-          "title": "Ponencia Magistral | Líneas de ayudas en el alumbrado exterior",
-          "speakers": ["Ángel Sánchez de Vera"],
-          "entity": "IDAE",
-          "room": "Auditorio",
-          "day": "2026-05-22"
-        },
-        {
-          "time": "12:00",
-          "title": "Mesa Redonda | Realización de medidas dinámicas de iluminancia y luminancia en instalaciones de alumbrado exterior",
-          "speakers": ["Senén Perales", "Rafael Soriano", "Luis M. Navarro", "Ángel Sánchez de Vera"],
-          "entity": "Amac Europa, Eficen, CEI, IDAE",
-          "room": "Auditorio",
-          "day": "2026-05-22"
-        }
+        { "time": "09:00", "title": "Comparativa real de mediciones estáticas y dinámicas", "speakers": ["Jaime Miguel"], "entity": "Jaime Miguel", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "09:20", "title": "Planes Directores de Alumbrado en la Diputación de Barcelona", "speakers": ["Diego Zamora"], "entity": "Diputación de Barcelona", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "09:20", "title": "Los centros de mando como punto de inflexión", "speakers": ["Iago Martinez"], "entity": "Edigal", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "09:40", "title": "Badajoz 2016-2026. La Champions League", "speakers": ["César Rodríguez-Arbaizagoitia"], "entity": "Ayuntamiento de Badajoz", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "09:40", "title": "Confort visual para movilidad lenta: nuevas métricas", "speakers": ["Miriam Emiliano", "Alex Brambilla"], "entity": "Cariboni Group SPA", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "10:00", "title": "Alumbrado lineal continuo para túneles: El futuro", "speakers": ["Rubén Jover", "José Yañez"], "entity": "Iluminia solutions SL", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "10:00", "title": "Alumbrado arquitectónico del Palacio de Rubalcava", "speakers": ["Mª Ángeles Fernández", "Javier Oneca"], "entity": "Saltoki", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "10:20", "title": "Caso Práctico: Lleida", "speakers": ["Josep Cucurull", "Jordina Oller"], "entity": "Edison Next Spain SLU", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "10:20", "title": "Moneyball: Rompiendo las reglas", "speakers": ["Miguel Ángel Ramos"], "entity": "Schréder Spain SLU", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "10:40", "title": "Pausa Café", "room": "General", "durationMinutes": 30 },
+        { "time": "11:10", "title": "Sesión Comité Español de Iluminación", "room": "Auditorio", "entity": "CEI", "durationMinutes": 30 },
+        { "time": "11:40", "title": "Luminarias fotovoltaicas: Evolución del reciclaje solar", "speakers": ["Patricia Herrero"], "entity": "Fundación ECOLUM", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "11:40", "title": "Lámparas de alumbrado público basadas en tecnología LED", "speakers": ["Raúl Fuster"], "entity": "Ledvance Lighting SAU", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "12:00", "title": "Por qué las soluciones solares deben estar telegestionadas", "speakers": ["Ricard Comulada"], "entity": "Tridonic", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "12:00", "title": "Nichia Corporation: Luz de adentro hacia fuera", "speakers": ["Fernando García"], "entity": "Nichia / Inelec", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "12:20", "title": "Influencia del tipo de LED en la óptica y fotometría", "speakers": ["Jordi Verdaguer", "Marc Ballbe"], "entity": "JVV Grup / Asselum", "room": "Auditorio", "durationMinutes": 20 },
+        { "time": "12:20", "title": "Plataforma digital para planificación estratégica del alumbrado", "speakers": ["Mattia Filippo Pagliai"], "entity": "Restart Engineering S.r.l", "room": "Polivalente", "durationMinutes": 20 },
+        { "time": "12:40", "title": "Mesa Redonda: Técnicos de Administración Pública", "room": "Auditorio", "durationMinutes": 50 },
+        { "time": "13:30", "title": "Clausura del Simposium", "room": "General", "durationMinutes": 30 },
+        { "time": "17:00", "title": "Asamblea General (1ª Convocatoria)", "room": "General", "durationMinutes": 30 },
+        { "time": "17:30", "title": "Asamblea General (2ª Convocatoria)", "room": "General", "durationMinutes": 90 },
+        { "time": "21:00", "title": "Cena de Clausura", "room": "General", "durationMinutes": 180 }
       ]
     }
   ]

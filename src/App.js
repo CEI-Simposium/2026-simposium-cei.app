@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import SesionCard from './components/SesionCard';
 import Auth from "./components/Auth";
 import { auth, db } from "./firebase";
@@ -8,7 +8,7 @@ import programaData from './data/programa.json';
 import { parseISO, setHours, setMinutes, formatISO } from 'date-fns';
 
 function App() {
-  const [program, setProgram] = useState(programaData);
+  const [loading, setLoading] = useState(true);
   const [selectedDay, setSelectedDay] = useState(programaData.days[0].label);
   const [roomFilter, setRoomFilter] = useState('Todos');
   const [query, setQuery] = useState('');
@@ -16,185 +16,189 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   const [showFavorites, setShowFavorites] = useState(false);
 
-  const days = program.days;
-
-  // Firebase Auth listener
+  // Listener de autenticación y carga de favoritos de Firestore
   useEffect(() => {
-    onAuthStateChanged(auth, async (u) => {
+    const unsubscribe = onAuthStateChanged(auth, async (u) => {
       setUser(u);
       if (u) {
         const docRef = doc(db, "favorites", u.uid);
         const docSnap = await getDoc(docRef);
-        setFavorites(docSnap.exists() ? docSnap.data().sessions || [] : []);
+        if (docSnap.exists()) setFavorites(docSnap.data().sessions || []);
       } else {
         setFavorites([]);
       }
+      setLoading(false);
     });
+    return () => unsubscribe();
   }, []);
 
-  // Add to Calendar
+  // Función optimizada para descargar archivo de calendario (.ics)
   const addToCalendar = (session, dayDate) => {
-    const [hh, mm] = session.time.split(':').map(Number);
-    let start = parseISO(dayDate + 'T00:00:00');
-    start = setHours(setMinutes(start, mm), hh);
-    const end = new Date(start.getTime() + (session.durationMinutes || 60) * 60000);
+    try {
+      const [hh, mm] = session.time.split(':').map(Number);
+      let start = parseISO(dayDate + 'T00:00:00');
+      start = setHours(setMinutes(start, mm), hh);
+      const duration = session.durationMinutes || 60;
+      const end = new Date(start.getTime() + duration * 60000);
+      const toICSDate = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 
-    const toICSDate = (d) => formatISO(d).replace(/[-:]/g, '').split('.')[0] + 'Z';
+      const cleanTitle = session.title.replace(/,/g, '\\,');
+      const cleanRoom = session.room.replace(/,/g, '\\,');
+      const speakers = (session.speakers || []).join(', ').replace(/,/g, '\\,');
 
-    const ics = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'BEGIN:VEVENT',
-      'SUMMARY:' + session.title,
-      'DTSTART:' + toICSDate(start),
-      'DTEND:' + toICSDate(end),
-      'DESCRIPTION:Ponentes: ' + (session.speakers || []).join(', ') + ' \nEntidad: ' + session.entity + ' \nSala: ' + session.room,
-      'END:VEVENT',
-      'END:VCALENDAR'
-    ].join('\r\n');
+      const ics = [
+        'BEGIN:VCALENDAR', 'VERSION:2.0', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        `SUMMARY:${cleanTitle}`,
+        `DTSTART:${toICSDate(start)}`,
+        `DTEND:${toICSDate(end)}`,
+        `LOCATION:${cleanRoom}`,
+        `DESCRIPTION:Ponentes: ${speakers}\\nEntidad: ${session.entity || 'N/A'}`,
+        'STATUS:CONFIRMED',
+        'END:VEVENT', 'END:VCALENDAR'
+      ].join('\r\n');
 
-    const blob = new Blob([ics], { type: 'text/calendar' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = session.title.replace(/[^a-z0-9]/gi, '_') + '.ics';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
-
-  // Toggle favorite
-  const toggleFavorite = async (session) => {
-    if (!user) return alert("Debes iniciar sesión para guardar favoritos");
-    let updated;
-    if (favorites.some(f => f.title === session.title && f.time === session.time)) {
-      updated = favorites.filter(f => !(f.title === session.title && f.time === session.time));
-    } else {
-      updated = [...favorites, session];
+      const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `${session.title.substring(0, 20).replace(/\s+/g, '_')}.ics`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setTimeout(() => URL.revokeObjectURL(url), 100);
+    } catch (error) {
+      console.error("Error al crear el evento:", error);
     }
+  };
+
+  // Función para añadir/quitar de favoritos en Firebase
+  const toggleFavorite = async (session) => {
+    if (!user) return alert("Inicia sesión para guardar favoritos");
+    const isFav = favorites.some(f => f.title === session.title && f.time === session.time);
+    const updated = isFav 
+      ? favorites.filter(f => !(f.title === session.title && f.time === session.time))
+      : [...favorites, { ...session, day: programaData.days.find(d => d.label === selectedDay).date }];
+    
     setFavorites(updated);
     await setDoc(doc(db, "favorites", user.uid), { sessions: updated });
-  }
+  };
 
-  // Filtered sessions
-  const currentDaySessions = days.find(d => d.label === selectedDay)?.sessions || [];
-  const filtered = currentDaySessions.filter(s => {
-    if (roomFilter !== 'Todos' && s.room !== roomFilter) return false;
-    const q = query.trim().toLowerCase();
-    if (!q) return true;
-    return s.title?.toLowerCase().includes(q)
-      || s.speakers?.join(' ').toLowerCase().includes(q)
-      || s.entity?.toLowerCase().includes(q);
-  });
+  // Lógica de filtrado de sesiones
+  const displayedSessions = useMemo(() => {
+    if (showFavorites) return favorites;
+    const day = programaData.days.find(d => d.label === selectedDay);
+    return (day?.sessions || []).filter(s => {
+      const matchRoom = roomFilter === 'Todos' || s.room === roomFilter;
+      const matchQuery = !query || s.title.toLowerCase().includes(query.toLowerCase()) || 
+                         s.speakers?.some(sp => sp.toLowerCase().includes(query.toLowerCase()));
+      return matchRoom && matchQuery;
+    });
+  }, [selectedDay, roomFilter, query, showFavorites, favorites]);
 
-  const displayedSessions = showFavorites ? favorites : filtered;
-
-  // Favorites grouped by day and ordered
-  const favoritesByDay = favorites.reduce((acc, session) => {
-    if (!acc[session.day]) acc[session.day] = [];
-    acc[session.day].push(session);
-    return acc;
-  }, {});
-
-  const orderedFavoritesByDay = days
-    .map(d => [d.date, favoritesByDay[d.date] || []])
-    .filter(([_, sessions]) => sessions.length > 0);
+  if (loading) return <div className="min-h-screen flex items-center justify-center font-bold text-sky-700">Cargando programa...</div>;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow sticky top-0 z-10">
-        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center gap-4">
-          <img src="/assets/logo.png" alt="CEI logo" className="h-12" />
+    <div className="min-h-screen bg-slate-50 pb-20 font-sans">
+      <header className="bg-white border-b sticky top-0 z-20 p-4 shadow-sm">
+        <div className="max-w-2xl mx-auto flex items-center gap-4">
+          <div className="bg-sky-600 text-white p-2 rounded-lg font-black italic shadow-sm">CEI</div>
           <div>
-            <h1 className="text-xl font-bold text-sky-700">LII Simposium Nacional de Alumbrado</h1>
-            <div className="text-sm text-gray-600">Lleida, 20–22 de mayo de 2026</div>
+            <h1 className="text-lg font-bold text-slate-900 leading-none">LII Simposium Nacional de Alumbrado</h1>
+            <p className="text-xs text-slate-500 mt-1 uppercase tracking-wider font-semibold">Lleida, 20–22 de mayo de 2026</p>
           </div>
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto p-4">
-        <Auth />
+      <main className="max-w-2xl mx-auto p-4 space-y-4">
+        <Auth user={user} />
 
-        <section className="mb-4">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <div className="flex items-center gap-2">
-              {days.map(d => (
-                <button
-                  key={d.label}
-                  onClick={() => { setSelectedDay(d.label); setQuery(''); setRoomFilter('Todos'); setShowFavorites(false); }}
-                  className={'px-3 py-1 rounded ' + (selectedDay === d.label ? 'bg-sky-600 text-white' : 'bg-white border')}
-                >
-                  {d.label}
-                </button>
-              ))}
-              <button
-                onClick={() => setShowFavorites(!showFavorites)}
-                className={'px-3 py-1 rounded ' + (showFavorites ? 'bg-yellow-400 text-white' : 'bg-white border')}
-              >
-                Favoritos
-              </button>
-            </div>
+        {/* SELECTOR DE DÍAS Y FAVORITOS */}
+        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+          {programaData.days.map(d => (
+            <button key={d.label} onClick={() => { setSelectedDay(d.label); setShowFavorites(false); }}
+              className={`px-5 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all ${selectedDay === d.label && !showFavorites ? 'bg-sky-600 text-white shadow-md' : 'bg-white text-slate-600 border'}`}>
+              {d.label}
+            </button>
+          ))}
+          <button onClick={() => setShowFavorites(true)}
+            className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${showFavorites ? 'bg-yellow-400 text-white shadow-md' : 'bg-white text-slate-600 border'}`}>
+            ⭐ Mis Favoritos
+          </button>
+        </div>
 
-            {!showFavorites && (
-              <div className="flex items-center gap-2">
-                <select value={roomFilter} onChange={e => setRoomFilter(e.target.value)} className="px-2 py-1 border rounded">
-                  <option>Todos</option>
-                  <option>Auditorio</option>
-                  <option>Polivalente</option>
-                </select>
-
-                <input
-                  value={query}
-                  onChange={e => setQuery(e.target.value)}
-                  placeholder="Buscar por título, ponente o entidad..."
-                  className="px-3 py-1 border rounded w-64"
-                />
-              </div>
-            )}
-          </div>
-        </section>
-
-        <section className="space-y-3">
-          {!showFavorites && displayedSessions.length === 0 && <div className="text-gray-500">No hay ponencias que coincidan.</div>}
-
-          {!showFavorites && displayedSessions.map((s, idx) => (
-            <SesionCard
-              key={idx}
-              session={s}
-              dayDate={days.find(d => d.label === selectedDay)?.date}
-              onAddCalendar={addToCalendar}
-              onToggleFavorite={toggleFavorite}
-              isFavorite={favorites.some(f => f.title === s.title && f.time === s.time)}
+        {/* FILTROS DE BÚSQUEDA (Ocultos en favoritos) */}
+        {!showFavorites && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <select value={roomFilter} onChange={e => setRoomFilter(e.target.value)} className="bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm outline-none">
+              <option value="Todos">Todas las salas</option>
+              <option value="Auditorio">Auditorio</option>
+              <option value="Polivalente">Polivalente</option>
+              <option value="General">General / Pausas</option>
+            </select>
+            <input 
+              placeholder="Buscar por título o ponente..." 
+              value={query} 
+              onChange={e => setQuery(e.target.value)} 
+              className="bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm outline-none" 
             />
-          ))}
+          </div>
+        )}
 
-          {showFavorites && orderedFavoritesByDay.map(([day, sessions]) => (
-            <div key={day}>
-              <h3 className="mt-4 mb-2 font-bold text-sky-700">
-                {days.find(d => d.date === day)?.label || day}
-              </h3>
+        {/* LISTADO DE SESIONES ORGANIZADO */}
+        <div className="space-y-6">
+          {displayedSessions.length === 0 && (
+            <p className="text-center text-slate-400 py-12 font-medium">No se han encontrado sesiones.</p>
+          )}
 
-              <div className="space-y-3">
-                {sessions.map((s, idx) => (
-                  <SesionCard
-                    key={idx}
-                    session={s}
-                    dayDate={day}
-                    onAddCalendar={addToCalendar}
-                    onToggleFavorite={toggleFavorite}
-                    isFavorite={true}
-                  />
-                ))}
-              </div>
+          {showFavorites ? (
+            // VISTA AGRUPADA POR DÍAS EN FAVORITOS
+            programaData.days.map(day => {
+              const dayFavs = favorites.filter(f => f.day === day.date);
+              if (dayFavs.length === 0) return null;
+              return (
+                <div key={day.date} className="space-y-3">
+                  <div className="flex items-center gap-3 py-2">
+                    <div className="h-px bg-slate-200 flex-1"></div>
+                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
+                      {day.label}
+                    </span>
+                    <div className="h-px bg-slate-200 flex-1"></div>
+                  </div>
+                  {dayFavs.map((s, i) => (
+                    <SesionCard 
+                      key={`${s.time}-${i}`} 
+                      session={s} 
+                      dayDate={s.day} 
+                      onAddCalendar={addToCalendar} 
+                      onToggleFavorite={toggleFavorite} 
+                      isFavorite={true} 
+                    />
+                  ))}
+                </div>
+              );
+            })
+          ) : (
+            // VISTA NORMAL POR DÍA SELECCIONADO
+            <div className="space-y-3">
+              {displayedSessions.map((s, i) => (
+                <SesionCard 
+                  key={`${s.time}-${i}`} 
+                  session={s} 
+                  dayDate={programaData.days.find(d => d.label === selectedDay).date} 
+                  onAddCalendar={addToCalendar} 
+                  onToggleFavorite={toggleFavorite} 
+                  isFavorite={favorites.some(f => f.title === s.title && f.time === s.time)} 
+                />
+              ))}
             </div>
-          ))}
-        </section>
+          )}
+        </div>
       </main>
 
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-6 right-6 bg-sky-600 text-white p-3 rounded-full shadow-lg"
-        aria-label="Volver arriba"
+        className="fixed bottom-6 right-6 bg-slate-900 text-white w-12 h-12 rounded-full shadow-xl flex items-center justify-center z-30"
       >
         ↑
       </button>
