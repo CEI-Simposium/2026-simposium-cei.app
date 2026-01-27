@@ -5,7 +5,7 @@ import { auth, db } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import programaData from './data/programa.json';
-import { parseISO, setHours, setMinutes, formatISO } from 'date-fns';
+import { parseISO, setHours, setMinutes } from 'date-fns';
 
 function App() {
   const [loading, setLoading] = useState(true);
