@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>LII Simposium Nacional de Alumbrado</title>
 
@@ -10,43 +9,50 @@
     <script>
       window.OneSignalDeferred = window.OneSignalDeferred || [];
       OneSignalDeferred.push(async function(OneSignal) {
-        await OneSignal.init({
-          appId: "46e0be44-a374-472e-b2d9-402011861aaa",
-          notifyButton: {
-            enable: true, /* Activa la campanita */
-            displayPredicate: function() {
-                return OneSignal.Notifications.permissionStatus !== 'denied';
-            },
-            size: 'medium',
-            position: 'bottom-right',
-            offset: {
-                bottom: '20px',
-                right: '20px'
-            },
-            colors: {
-                'circle.background': '#0055aa', /* Cambia este color al de tu logo si quieres */
-                'badge.background': 'red'
-            },
-            text: {
-                'tip.state.unsubscribed': 'Suscribirse a avisos',
-                'tip.state.subscribed': 'Estás suscrito',
-                'tip.state.blocked': 'Avisos bloqueados',
-                'message.prenotify': 'Haz clic para recibir avisos del Simposium',
-                'message.action.subscribed': '¡Gracias!',
-                'message.action.resubscribed': 'Suscrito de nuevo',
-                'message.action.unsubscribed': 'Ya no recibirás avisos',
-                'dialog.main.title': 'Centro de Avisos',
-                'dialog.main.button.subscribe': 'SUSCRIBIRSE',
-                'dialog.main.button.unsubscribe': 'DESACTIVAR'
-            },
-            /* ESTO ACTIVA EL HISTORIAL */
-            enableMessageArchive: true 
-          }
-        });
+        await OneSignal.init({ appId: "46e0be44-a374-472e-b2d9-402011861aaa" });
       });
     </script>
+
+    <style>
+      #muro-avisos {
+        display: none; /* Se oculta si no hay mensaje */
+        background: #fdf2f2; /* Color suave */
+        color: #9b1c1c;
+        padding: 15px;
+        border-bottom: 2px solid #f05252;
+        text-align: center;
+        font-family: sans-serif;
+        font-weight: bold;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+    </style>
 </head>
 <body class="antialiased bg-white">
+    <div id="muro-avisos">
+      📢 <span id="texto-aviso">Cargando avisos importantes...</span>
+    </div>
+
     <div id="root"></div>
+
+    <script>
+      async function actualizarAviso() {
+        try {
+          // Sustituye esta URL por la tuya de Google Sheets luego
+          const response = await fetch('TU_URL_DE_APPS_SCRIPT');
+          const data = await response.json();
+          if (data.mensaje && data.mensaje.trim() !== "") {
+            document.getElementById('texto-aviso').innerText = data.mensaje;
+            document.getElementById('muro-avisos').style.display = 'block';
+          } else {
+            document.getElementById('muro-avisos').style.display = 'none';
+          }
+        } catch (e) { console.log("Sin avisos"); }
+      }
+      actualizarAviso();
+      // Se actualiza cada 30 segundos automáticamente
+      setInterval(actualizarAviso, 30000);
+    </script>
 </body>
 </html>
