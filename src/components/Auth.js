@@ -3,9 +3,7 @@ import { auth } from '../firebase';
 import { 
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword, 
-  signOut, 
-  GoogleAuthProvider, 
-  signInWithPopup 
+  signOut 
 } from 'firebase/auth';
 
 // Mapeo de errores para que el usuario los entienda en español
@@ -42,15 +40,6 @@ export default function Auth({ user }) {
     setLoading(false);
   };
 
-  const handleGoogleLogin = async () => {
-    const provider = new GoogleAuthProvider();
-    try {
-      await signInWithPopup(auth, provider);
-    } catch (err) {
-      setError('Error al conectar con Google.');
-    }
-  };
-
   const handleLogout = () => signOut(auth);
 
   if (user) {
@@ -81,18 +70,7 @@ export default function Auth({ user }) {
         {isRegister ? 'Crear cuenta' : 'Acceso para Favoritos'}
       </h3>
       
-      <button 
-        onClick={handleGoogleLogin}
-        className="w-full flex items-center justify-center gap-3 border border-slate-200 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-all mb-4"
-      >
-        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" className="w-5" alt="Google" />
-        Continuar con Google
-      </button>
-
-      <div className="relative my-6">
-        <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-slate-100"></span></div>
-        <div className="relative flex justify-center text-xs uppercase"><span className="bg-white px-2 text-slate-400 font-medium">o con tu email</span></div>
-      </div>
+      {/* Se ha eliminado el botón de Google y la línea divisoria "o" */}
 
       <form onSubmit={handleEmailAuth} className="space-y-3">
         <input 
