@@ -1,22 +1,52 @@
 <!doctype html>
 <html lang="es">
-  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "46e0be44-a374-472e-b2d9-402011861aaa",
-    });
-  });
-</script>
-  <head>
+<head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>LII Simposium Nacional de Alumbrado</title>
-    
-  </head>
-  <body class="antialiased bg-white">
+
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "46e0be44-a374-472e-b2d9-402011861aaa",
+          notifyButton: {
+            enable: true, /* Activa la campanita */
+            displayPredicate: function() {
+                return OneSignal.Notifications.permissionStatus !== 'denied';
+            },
+            size: 'medium',
+            position: 'bottom-right',
+            offset: {
+                bottom: '20px',
+                right: '20px'
+            },
+            colors: {
+                'circle.background': '#0055aa', /* Cambia este color al de tu logo si quieres */
+                'badge.background': 'red'
+            },
+            text: {
+                'tip.state.unsubscribed': 'Suscribirse a avisos',
+                'tip.state.subscribed': 'Estás suscrito',
+                'tip.state.blocked': 'Avisos bloqueados',
+                'message.prenotify': 'Haz clic para recibir avisos del Simposium',
+                'message.action.subscribed': '¡Gracias!',
+                'message.action.resubscribed': 'Suscrito de nuevo',
+                'message.action.unsubscribed': 'Ya no recibirás avisos',
+                'dialog.main.title': 'Centro de Avisos',
+                'dialog.main.button.subscribe': 'SUSCRIBIRSE',
+                'dialog.main.button.unsubscribe': 'DESACTIVAR'
+            },
+            /* ESTO ACTIVA EL HISTORIAL */
+            enableMessageArchive: true 
+          }
+        });
+      });
+    </script>
+</head>
+<body class="antialiased bg-white">
     <div id="root"></div>
-  </body>
+</body>
 </html>
