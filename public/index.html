@@ -15,10 +15,10 @@
 
     <style>
       #muro-avisos {
-        display: none; /* Se oculta si no hay mensaje */
-        background: #fdf2f2; /* Color suave */
+        display: none; 
+        background: #fdf2f2; 
         color: #9b1c1c;
-        padding: 15px;
+        padding: 15px 40px 15px 15px; /* Espacio para la X */
         border-bottom: 2px solid #f05252;
         text-align: center;
         font-family: sans-serif;
@@ -27,11 +27,21 @@
         top: 0;
         z-index: 999;
       }
+      #cerrar-aviso {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 20px;
+        opacity: 0.7;
+      }
     </style>
 </head>
 <body class="antialiased bg-white">
     <div id="muro-avisos">
-      📢 <span id="texto-aviso">Cargando avisos importantes...</span>
+      📢 <span id="texto-aviso">Cargando avisos...</span>
+      <span id="cerrar-aviso" onclick="document.getElementById('muro-avisos').style.display='none'">×</span>
     </div>
 
     <div id="root"></div>
@@ -39,19 +49,28 @@
     <script>
       async function actualizarAviso() {
         try {
-          // Sustituye esta URL por la tuya de Google Sheets luego
-          const response = await fetch('TU_URL_DE_APPS_SCRIPT');
+          // Tu URL de Google Sheets conectada
+          const url = 'https://script.google.com/macros/s/AKfycbwNT97y-iS5IegV2BxBjMpKraulbPrVqOH9DsjHa2lDo8RnQ-ul6xBtPl-mBsZsaIM27Q/exec';
+          const response = await fetch(url);
           const data = await response.json();
-          if (data.mensaje && data.mensaje.trim() !== "") {
-            document.getElementById('texto-aviso').innerText = data.mensaje;
-            document.getElementById('muro-avisos').style.display = 'block';
+          
+          const banner = document.getElementById('muro-avisos');
+          const texto = document.getElementById('texto-aviso');
+
+          if (data.mensaje && data.mensaje.toString().trim() !== "") {
+            texto.innerText = data.mensaje;
+            banner.style.display = 'block';
           } else {
-            document.getElementById('muro-avisos').style.display = 'none';
+            banner.style.display = 'none';
           }
-        } catch (e) { console.log("Sin avisos"); }
+        } catch (e) { 
+          console.log("Esperando aviso del Excel..."); 
+        }
       }
+      
+      // Ejecutar al cargar
       actualizarAviso();
-      // Se actualiza cada 30 segundos automáticamente
+      // Revisar cambios en el Excel cada 30 segundos
       setInterval(actualizarAviso, 30000);
     </script>
 </body>
