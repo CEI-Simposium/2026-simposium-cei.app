@@ -3,12 +3,12 @@
   "name": "Simposium Nacional de Alumbrado 2026",
   "icons": [
     {
-      "src": "Assets/logo-simposium.png",
+      "src": "assets/logo-simposium.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "Assets/logo-simposium.png",
+      "src": "assets/logo-simposium.png",
       "type": "image/png",
       "sizes": "512x512"
     }
