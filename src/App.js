@@ -102,8 +102,11 @@ function App() {
     <div className="min-h-screen bg-slate-50 pb-20 font-sans">
       <header className="bg-white border-b sticky top-0 z-20 p-4 shadow-sm">
         <div className="max-w-2xl mx-auto flex items-center gap-4">
-          <div className="bg-sky-600 text-white p-2 rounded-lg font-black italic shadow-sm">CEI</div>
-          <div>
+<img 
+  src="/assets/logo.png" 
+  alt="Logo CEI" 
+  className="h-12 w-auto object-contain" 
+/>          <div>
             <h1 className="text-lg font-bold text-slate-900 leading-none">LII Simposium Nacional de Alumbrado</h1>
             <p className="text-xs text-slate-500 mt-1 uppercase tracking-wider font-semibold">Lleida, 20–22 de mayo de 2026</p>
           </div>
