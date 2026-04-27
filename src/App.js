@@ -145,7 +145,7 @@ function App() {
               <option value="Auditorium Leandre Cristòfol">Auditorium Leandre Cristòfol</option>
               <option value="Foyer Lateral">Foyer Lateral</option>
               <option value="General">General / Pausas</option>
-              <option value="Actos Sociales">Actos sociales</option>
+              <option value="Actos sociales">Actos sociales</option>
             </select>
             <input 
               placeholder="Buscar por título, ponente o entidad" 
