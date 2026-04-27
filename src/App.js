@@ -135,8 +135,8 @@ function App() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <select value={roomFilter} onChange={e => setRoomFilter(e.target.value)} className="bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm outline-none">
               <option value="Todos">Todas las salas</option>
-              <option value="Auditorio">Auditorio</option>
-              <option value="Polivalente">Polivalente</option>
+              <option value="Auditorium Leandre Cristòfol">Auditorium Leandre Cristòfol</option>
+              <option value="Foyer Lateral">Foyer Lateral</option>
               <option value="General">General / Pausas</option>
             </select>
             <input 
