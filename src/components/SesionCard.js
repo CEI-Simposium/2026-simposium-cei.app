@@ -8,9 +8,9 @@ const SesionCard = React.memo(({ session, dayDate, onAddCalendar, onToggleFavori
   
   const getRoomStyle = (r) => {
     switch (r) {
-      case 'Auditorio':
+      case 'Auditorium Leandre Cristòfol':
         return 'border-l-amber-500 bg-amber-50/30 text-amber-700 border-amber-200';
-      case 'Polivalente':
+      case 'Foyer Lateral':
         return 'border-l-emerald-500 bg-emerald-50/30 text-emerald-700 border-emerald-200';
       default:
         return 'border-l-slate-300 bg-slate-50 text-slate-500 border-slate-200';
