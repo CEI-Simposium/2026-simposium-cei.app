@@ -32,7 +32,7 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  // Función optimizada para descargar archivo de calendario (.ics)
+  // Función para descargar archivo de calendario (.ics) CORREGIDA
   const addToCalendar = (session, dayDate) => {
     try {
       const [hh, mm] = session.time.split(':').map(Number);
@@ -43,25 +43,11 @@ function App() {
       const toICSDate = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 
       const cleanTitle = session.title.replace(/,/g, '\\,');
-const cleanTitle = session.title.replace(/,/g, '\\,');
+      
+      // Lógica de localización: Usa 'location' si existe (para GPS), si no 'room'
+      const locationValue = session.location || session.room || 'Lleida';
+      const cleanLocation = locationValue.replace(/,/g, '\\,');
 
-// NUEVA LÓGICA: Si hay "location" usa eso, si no, usa la sala ("room")
-const locationValue = session.location || session.room || 'Lleida';
-const cleanLocation = locationValue.replace(/,/g, '\\,');
-
-const speakers = (session.speakers || []).join(', ').replace(/,/g, '\\,');
-
-const ics = [
-  'BEGIN:VCALENDAR', 'VERSION:2.0', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
-  'BEGIN:VEVENT',
-  `SUMMARY:${cleanTitle}`,
-  `DTSTART:${toICSDate(start)}`,
-  `DTEND:${toICSDate(end)}`,
-  `LOCATION:${cleanLocation}`, // <--- Ahora usará la dirección exacta
-  `DESCRIPTION:Ponentes: ${speakers}\\nEntidad: ${session.entity || 'N/A'}`,
-  'STATUS:CONFIRMED',
-  'END:VEVENT', 'END:VCALENDAR'
-].join('\r\n');
       const speakers = (session.speakers || []).join(', ').replace(/,/g, '\\,');
 
       const ics = [
@@ -70,7 +56,7 @@ const ics = [
         `SUMMARY:${cleanTitle}`,
         `DTSTART:${toICSDate(start)}`,
         `DTEND:${toICSDate(end)}`,
-        `LOCATION:${cleanRoom}`,
+        `LOCATION:${cleanLocation}`,
         `DESCRIPTION:Ponentes: ${speakers}\\nEntidad: ${session.entity || 'N/A'}`,
         'STATUS:CONFIRMED',
         'END:VEVENT', 'END:VCALENDAR'
@@ -102,21 +88,19 @@ const ics = [
     await setDoc(doc(db, "favorites", user.uid), { sessions: updated });
   };
 
-// Lógica de filtrado de sesiones
+  // Lógica de filtrado de sesiones CORREGIDA (Incluye Entidad)
   const displayedSessions = useMemo(() => {
     if (showFavorites) return favorites;
     const day = programaData.days.find(d => d.label === selectedDay);
     
     return (day?.sessions || []).filter(s => {
       const matchRoom = roomFilter === 'Todos' || s.room === roomFilter;
-      
-      // Definimos el término de búsqueda una sola vez
       const term = query.toLowerCase();
       
       const matchQuery = !query || 
                          s.title.toLowerCase().includes(term) || 
                          (s.speakers && s.speakers.some(sp => sp.toLowerCase().includes(term))) ||
-                         (s.entity && s.entity.toLowerCase().includes(term)); // <--- Ahora sí está unido con ||
+                         (s.entity && s.entity.toLowerCase().includes(term));
       
       return matchRoom && matchQuery;
     });
@@ -128,11 +112,8 @@ const ics = [
     <div className="min-h-screen bg-slate-50 pb-20 font-sans">
       <header className="bg-white border-b sticky top-0 z-20 p-4 shadow-sm">
         <div className="max-w-2xl mx-auto flex items-center gap-4">
-<img 
-  src="/assets/logo.png" 
-  alt="Logo CEI" 
-  className="h-12 w-auto object-contain" 
-/>          <div>
+          <img src="/assets/logo.png" alt="Logo CEI" className="h-12 w-auto object-contain" />
+          <div>
             <h1 className="text-lg font-bold text-slate-900 leading-none">LII Simposium Nacional de Alumbrado</h1>
             <p className="text-xs text-slate-500 mt-1 uppercase tracking-wider font-semibold">Lleida, 20–22 de mayo de 2026</p>
           </div>
@@ -156,7 +137,7 @@ const ics = [
           </button>
         </div>
 
-        {/* FILTROS DE BÚSQUEDA (Ocultos en favoritos) */}
+        {/* FILTROS DE BÚSQUEDA */}
         {!showFavorites && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <select value={roomFilter} onChange={e => setRoomFilter(e.target.value)} className="bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm outline-none">
@@ -175,14 +156,13 @@ const ics = [
           </div>
         )}
 
-        {/* LISTADO DE SESIONES ORGANIZADO */}
+        {/* LISTADO DE SESIONES */}
         <div className="space-y-6">
           {displayedSessions.length === 0 && (
             <p className="text-center text-slate-400 py-12 font-medium">No se han encontrado sesiones.</p>
           )}
 
           {showFavorites ? (
-            // VISTA AGRUPADA POR DÍAS EN FAVORITOS
             programaData.days.map(day => {
               const dayFavs = favorites.filter(f => f.day === day.date);
               if (dayFavs.length === 0) return null;
@@ -190,9 +170,7 @@ const ics = [
                 <div key={day.date} className="space-y-3">
                   <div className="flex items-center gap-3 py-2">
                     <div className="h-px bg-slate-200 flex-1"></div>
-                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
-                      {day.label}
-                    </span>
+                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{day.label}</span>
                     <div className="h-px bg-slate-200 flex-1"></div>
                   </div>
                   {dayFavs.map((s, i) => (
@@ -209,7 +187,6 @@ const ics = [
               );
             })
           ) : (
-            // VISTA NORMAL POR DÍA SELECCIONADO
             <div className="space-y-3">
               {displayedSessions.map((s, i) => (
                 <SesionCard 
