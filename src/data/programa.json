@@ -25,7 +25,7 @@
         { "time": "19:10", "title": "Implicaciones del cambio de norma de aplicación de seguridad fotobiológica en la evaluación de seguridad de luminarias", "room": "Foyer Lateral", "speakers": ["Teresa Molina"], "entity": "candelTEC S.L.", "durationMinutes": 20 },
         { "time": "19:30", "title": "De la norma al césped: retos reales en la evaluación de la iluminación en campos de fútbol", "room": "Auditorium Leandre Cristòfol", "speakers": ["Albert de Ramos", "Marc Ballbe"], "entity": "Benito / Asselum", "durationMinutes": 20 },
         { "time": "19:30", "title": "Experiencias de control de punto unidireccional", "room": "Foyer Lateral", "speakers": ["Francisco Pérez", "Daniel Urbiztondo"], "entity": "ARELSA", "durationMinutes": 20 },
-        { "time": "21:00", "title": "Recepción Institucional del Ayuntamiento de Lleida en la Seu Vella", "room": "General", "entity": "La Seu Vella", "durationMinutes": 90 }
+        { "time": "21:00", "title": "Recepción Institucional del Ayuntamiento de Lleida", "room": "Actos sociales", "location": "La Seu Vella, Lleida", "durationMinutes": 90 }
       ]
     },
     {
@@ -53,7 +53,7 @@
         { "time": "12:30", "title": "Evolución y tendencias futuras del alumbrado", "speakers": ["Miguel Ángel Ramos"], "entity": "Schréder Spain SLU", "room": "Auditorium Leandre Cristòfol", "durationMinutes": 20 },
         { "time": "12:30", "title": "Claves para la verificación técnica en luminarias de alumbrado público", "speakers": ["Joan Milian"], "entity": "Simon Lighting", "room": "Foyer Lateral", "durationMinutes": 20 },
         { "time": "12:50", "title": "Mesa Redonda | Iluminación interior: sostenibilidad y calidad de la iluminación", "room": "Auditorium Leandre Cristòfol", "durationMinutes": 50 },
-        { "time": "14:00", "title": "Almuerzo de trabajo", "room": "General", "durationMinutes": 120 },
+        { "time": "14:00", "title": "Almuerzo de trabajo", "room": "Actos sociales", "location": "Palau de Congressos La Llotja", "durationMinutes": 120 },
         { "time": "16:00", "title": "Servicios energéticos para iluminación interior. ESE de 9 colegios de Rivas", "speakers": ["José María Suazo"], "entity": "Edison Next Spain SLU", "room": "Auditorium Leandre Cristòfol", "durationMinutes": 20 },
         { "time": "16:00", "title": "Agaete, Puerto de estrellas", "speakers": ["J. Federico de la Paz"], "entity": "Instituto de Astrofísica de Canarias", "room": "Foyer Lateral", "durationMinutes": 20 },
         { "time": "16:20", "title": "XPERenergy, la propuesta de Serveo para la transformación tecnológica del alumbrado municipal adaptada a las necesidades de la ciudadanía y el turismo inteligente", "speakers": ["Miguel Ángel Jurado"], "entity": "Serveo", "room": "Auditorium Leandre Cristòfol", "durationMinutes": 20 },
@@ -72,7 +72,7 @@
         { "time": "18:50", "title": "Renovación del Alumbrado Deportivo de Lleida integrando un sistema de Control", "speakers": ["Jordi Berengueras"], "entity": "Benito Urban SLU", "room": "Auditorium Leandre Cristòfol", "durationMinutes": 20 },
         { "time": "18:50", "title": "¿FHS 0 a cualquier precio?", "speakers": ["Andrés Armañanzas", "Sandra Solán", "Guillermo Redrado"], "entity": "ATP Iluminación S.A.", "room": "Foyer Lateral", "durationMinutes": 20 },
         { "time": "19:10", "title": "Mesa Redonda: Lighting Design", "room": "Auditorium Leandre Cristòfol", "durationMinutes": 50 },
-        { "time": "21:00", "title": "Recorrido gastronómico por la ciudad de Lleida", "room": "General", "durationMinutes": 120 }
+        { "time": "21:00", "title": "Recorrido gastronómico por la ciudad de Lleida", "room": "Actos sociales", "location": "Centro histórico de Lleida", "durationMinutes": 120 }
       ]
     },
     {
@@ -101,7 +101,7 @@
         { "time": "14:00", "title": "Clausura del Simposium", "room": "General", "durationMinutes": 30 },
         { "time": "17:00", "title": "Asamblea General (1ª Convocatoria)", "room": "General", "durationMinutes": 30 },
         { "time": "17:30", "title": "Asamblea General (2ª Convocatoria)", "room": "General", "durationMinutes": 90 },
-        { "time": "21:00", "title": "Cena de Clausura", "room": "General", "durationMinutes": 180 }
+        { "time": "21:00", "title": "Cena de Clausura", "room": "Actos sociales", "location": "Finca Prats | Hotel Golf & SPA", "durationMinutes": 180 }
       ]
     }
   ]

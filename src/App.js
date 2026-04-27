@@ -43,7 +43,25 @@ function App() {
       const toICSDate = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 
       const cleanTitle = session.title.replace(/,/g, '\\,');
-      const cleanRoom = session.room.replace(/,/g, '\\,');
+const cleanTitle = session.title.replace(/,/g, '\\,');
+
+// NUEVA LÓGICA: Si hay "location" usa eso, si no, usa la sala ("room")
+const locationValue = session.location || session.room || 'Lleida';
+const cleanLocation = locationValue.replace(/,/g, '\\,');
+
+const speakers = (session.speakers || []).join(', ').replace(/,/g, '\\,');
+
+const ics = [
+  'BEGIN:VCALENDAR', 'VERSION:2.0', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+  'BEGIN:VEVENT',
+  `SUMMARY:${cleanTitle}`,
+  `DTSTART:${toICSDate(start)}`,
+  `DTEND:${toICSDate(end)}`,
+  `LOCATION:${cleanLocation}`, // <--- Ahora usará la dirección exacta
+  `DESCRIPTION:Ponentes: ${speakers}\\nEntidad: ${session.entity || 'N/A'}`,
+  'STATUS:CONFIRMED',
+  'END:VEVENT', 'END:VCALENDAR'
+].join('\r\n');
       const speakers = (session.speakers || []).join(', ').replace(/,/g, '\\,');
 
       const ics = [
@@ -146,6 +164,7 @@ function App() {
               <option value="Auditorium Leandre Cristòfol">Auditorium Leandre Cristòfol</option>
               <option value="Foyer Lateral">Foyer Lateral</option>
               <option value="General">General / Pausas</option>
+              <option value="Actos Sociales">Actos Sociales</option>
             </select>
             <input 
               placeholder="Buscar por título, ponente o entidad" 
