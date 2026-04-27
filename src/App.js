@@ -140,7 +140,7 @@ function App() {
               <option value="General">General / Pausas</option>
             </select>
             <input 
-              placeholder="Buscar por título o ponente..." 
+              placeholder="Buscar por título, ponente o entidad" 
               value={query} 
               onChange={e => setQuery(e.target.value)} 
               className="bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-sm outline-none" 
