@@ -84,14 +84,22 @@ function App() {
     await setDoc(doc(db, "favorites", user.uid), { sessions: updated });
   };
 
-  // Lógica de filtrado de sesiones
+// Lógica de filtrado de sesiones
   const displayedSessions = useMemo(() => {
     if (showFavorites) return favorites;
     const day = programaData.days.find(d => d.label === selectedDay);
+    
     return (day?.sessions || []).filter(s => {
       const matchRoom = roomFilter === 'Todos' || s.room === roomFilter;
-      const matchQuery = !query || s.title.toLowerCase().includes(query.toLowerCase()) || 
-                         s.speakers?.some(sp => sp.toLowerCase().includes(query.toLowerCase()));
+      
+      // Definimos el término de búsqueda una sola vez
+      const term = query.toLowerCase();
+      
+      const matchQuery = !query || 
+                         s.title.toLowerCase().includes(term) || 
+                         (s.speakers && s.speakers.some(sp => sp.toLowerCase().includes(term))) ||
+                         (s.entity && s.entity.toLowerCase().includes(term)); // <--- Ahora sí está unido con ||
+      
       return matchRoom && matchQuery;
     });
   }, [selectedDay, roomFilter, query, showFavorites, favorites]);
